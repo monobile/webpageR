@@ -1,0 +1,27 @@
+# Reference compose file for deploying to a Docker-capable host.
+# The Hostinger VPS project uses this same topology: the Next.js app
+# behind Caddy, which terminates HTTPS with automatic Let's Encrypt
+# certificates for raydancafe.com.
+services:
+  web:
+    build:
+      context: .
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    command: >
+      sh -c "printf 'raydancafe.com {\n  reverse_proxy web:3000\n}\nwww.raydancafe.com {\n  redir https://raydancafe.com{uri} permanent\n}\n' > /etc/caddy/Caddyfile && caddy run --config /etc/caddy/Caddyfile"
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - web
+
+volumes:
+  caddy_data:
+  caddy_config:
