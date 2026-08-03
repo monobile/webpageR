@@ -1,21 +1,46 @@
-# Hostinger VPS deployment (Docker Manager project).
+# Hostinger VPS deployment — the compose project actually running on the
+# VPS (Docker Manager project "raydan").
 #
-# Prerequisite: the GitHub repository must be publicly clonable (or the
-# build context below replaced with a reachable copy of the source),
-# because the VPS builds the image straight from the repo.
+# Note: Hostinger's Docker Manager does not run `build:` instructions, so
+# the app is built at container start instead: the `web` service clones
+# the public repository, runs `npm ci && npm run build` once into the
+# cached `app` volume, and then serves with `npm start`. On subsequent
+# restarts it fetches the latest commit and rebuilds only when the
+# repository has changed — so redeploying after a `git push` is simply
+# "restart the project" (hPanel → VPS → Docker Manager → raydan →
+# Restart, or the API `VPS_restartProjectV1`).
 #
-# Deploy via Hostinger hPanel → VPS → Docker Manager → Create project
-# (paste this file as the compose content), or via the Hostinger API/MCP
-# `VPS_createNewProjectV1` with this file as `content`.
-#
-# DNS for raydancafe.com already points at the VPS; Caddy below obtains
-# and renews Let's Encrypt certificates automatically for the apex and
-# www host once the records resolve.
+# Caddy terminates HTTPS with automatic Let's Encrypt certificates for
+# raydancafe.com and www.raydancafe.com (DNS points at the VPS).
 services:
   web:
-    build:
-      context: "https://github.com/monobile/webpageR.git#claude/raydan-cafeteria-landing-2wumyw"
+    image: node:22-alpine
     restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - app:/app
+    environment:
+      - NEXT_TELEMETRY_DISABLED=1
+    command:
+      - sh
+      - -c
+      - |
+        set -e
+        apk add --no-cache git
+        if [ ! -d /app/.git ]; then
+          rm -rf /app/* /app/.[!.]* 2>/dev/null || true
+          git clone https://github.com/monobile/webpageR.git /app
+        fi
+        cd /app
+        git fetch origin || true
+        git reset --hard origin/HEAD || true
+        HEAD_SHA=$(git rev-parse HEAD)
+        if [ ! -f .next/BUILD_ID ] || [ "$HEAD_SHA" != "$(cat .deployed_sha 2>/dev/null)" ]; then
+          npm ci
+          npm run build
+          echo "$HEAD_SHA" > .deployed_sha
+        fi
+        npm start
 
   caddy:
     image: caddy:2-alpine
@@ -34,5 +59,6 @@ services:
       - web
 
 volumes:
+  app:
   caddy_data:
   caddy_config:

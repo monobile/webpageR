@@ -146,13 +146,16 @@ The production domain is **raydancafe.com** (already the default
 `siteUrl` in `data/contact.ts`), and its DNS A record points at the
 Hostinger VPS (187.77.147.172).
 
-**Hostinger VPS (Docker):** deploy `deploy/docker-compose.vps.yml` as a
-Docker Manager project (hPanel → VPS → Docker Manager → Create project,
-paste the file's contents). It builds the app from this repository and
-runs it behind Caddy, which issues Let's Encrypt certificates for
-raydancafe.com and www automatically. The repository must be publicly
-clonable for the VPS build; alternatively build the image elsewhere and
-point the `web` service at it.
+**Hostinger VPS (Docker):** the site runs as the Docker Manager project
+`raydan` on the VPS, defined by `deploy/docker-compose.vps.yml` — the
+app is cloned and built from this repository at container start and
+served behind Caddy, which issues Let's Encrypt certificates for
+raydancafe.com and www automatically (the repository must remain
+publicly clonable).
+
+**To redeploy after pushing changes:** restart the project
+(hPanel → VPS → Docker Manager → raydan → Restart). The web container
+fetches the latest commit and rebuilds only when the repository changed.
 
 The `/` → `/ru` redirect is defined in `next.config.ts`; if you move to
 fully static hosting (`output: "export"`), replicate that redirect at the
