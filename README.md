@@ -143,11 +143,20 @@ npm run build && npm start
 ```
 
 The production domain is **raydancafe.com** (already the default
-`siteUrl` in `data/contact.ts`). On a Node host (e.g. Hostinger with a
-Node.js app, or Vercel) run the build and start commands above. The
-`/` → `/ru` redirect is defined in `next.config.ts`; if you move to fully
-static hosting (`output: "export"`), replicate that redirect at the host
-level.
+`siteUrl` in `data/contact.ts`), and its DNS A record points at the
+Hostinger VPS (187.77.147.172).
+
+**Hostinger VPS (Docker):** deploy `deploy/docker-compose.vps.yml` as a
+Docker Manager project (hPanel → VPS → Docker Manager → Create project,
+paste the file's contents). It builds the app from this repository and
+runs it behind Caddy, which issues Let's Encrypt certificates for
+raydancafe.com and www automatically. The repository must be publicly
+clonable for the VPS build; alternatively build the image elsewhere and
+point the `web` service at it.
+
+The `/` → `/ru` redirect is defined in `next.config.ts`; if you move to
+fully static hosting (`output: "export"`), replicate that redirect at the
+host level.
 
 ## Values the owner should confirm
 

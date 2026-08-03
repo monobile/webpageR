@@ -1,0 +1,38 @@
+# Hostinger VPS deployment (Docker Manager project).
+#
+# Prerequisite: the GitHub repository must be publicly clonable (or the
+# build context below replaced with a reachable copy of the source),
+# because the VPS builds the image straight from the repo.
+#
+# Deploy via Hostinger hPanel → VPS → Docker Manager → Create project
+# (paste this file as the compose content), or via the Hostinger API/MCP
+# `VPS_createNewProjectV1` with this file as `content`.
+#
+# DNS for raydancafe.com already points at the VPS; Caddy below obtains
+# and renews Let's Encrypt certificates automatically for the apex and
+# www host once the records resolve.
+services:
+  web:
+    build:
+      context: "https://github.com/monobile/webpageR.git#claude/raydan-cafeteria-landing-2wumyw"
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+    command:
+      - sh
+      - -c
+      - printf 'raydancafe.com {\n  reverse_proxy web:3000\n}\nwww.raydancafe.com {\n  redir https://raydancafe.com{uri} permanent\n}\n' > /tmp/Caddyfile && caddy run --config /tmp/Caddyfile
+    depends_on:
+      - web
+
+volumes:
+  caddy_data:
+  caddy_config:
