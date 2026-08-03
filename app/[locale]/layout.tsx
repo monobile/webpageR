@@ -93,7 +93,7 @@ export async function generateMetadata({
       locale: ogLocales[locale],
       images: [
         {
-          url: "/brand/og.png",
+          url: "/brand/og.jpg",
           width: 1200,
           height: 630,
           alt: t.meta.ogAlt,
@@ -104,7 +104,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: t.meta.title,
       description: t.meta.description,
-      images: ["/brand/og.png"],
+      images: ["/brand/og.jpg"],
     },
   };
 }
