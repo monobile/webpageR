@@ -1,0 +1,178 @@
+{
+  "meta": {
+    "title": "Raydan — Plov, Homemade Cuisine & Delivery in Grozny",
+    "description": "Raydan cafeteria in Grozny: Tajik plov, homemade dishes, Indian cuisine, coffee, delivery, catering and made-to-order meals.",
+    "ogAlt": "Raydan — a cafeteria of homemade and international cuisine in Grozny"
+  },
+  "nav": {
+    "home": "Home",
+    "menu": "Menu",
+    "delivery": "Delivery",
+    "catering": "Catering",
+    "locations": "Locations"
+  },
+  "header": {
+    "order": "Order",
+    "openNav": "Open navigation menu",
+    "closeNav": "Close navigation menu",
+    "logoAlt": "Raydan cafeteria logo",
+    "langLabel": "Choose language",
+    "skipToContent": "Skip to content"
+  },
+  "hero": {
+    "titleLine1": "The Republic’s",
+    "titleLine2": "best-selling plov",
+    "subtitle": "Tajik plov, comforting homemade dishes, Indian cuisine, fresh bakery items, and barista-made drinks.",
+    "ctaPrimary": "View menu",
+    "ctaSecondary": "Order delivery",
+    "trustHours": "Open daily 08:00–00:00",
+    "trustLocations": "Three locations in Grozny",
+    "trustDelivery": "Delivery and made-to-order dishes",
+    "plateAlt": "Raydan’s signature black plate with gold ornament"
+  },
+  "brand": {
+    "label": "About Raydan",
+    "heading": "A cafeteria with the soul of a restaurant",
+    "p1": "Raydan blends the ease of a modern cafeteria with the atmosphere of a good restaurant. Guests choose their dishes at the serving line, and our team plates them quickly, neatly and with genuine warmth.",
+    "p2": "Tajik plov is the heart of the menu, joined by homemade dishes, soups, salads, Indian cuisine, desserts, coffee and signature drinks.",
+    "values": [
+      { "title": "Homemade taste", "text": "Familiar comfort dishes, freshly cooked every single day." },
+      { "title": "Fast service", "text": "No waiting at the serving line — choose your dishes and take a seat." },
+      { "title": "International cuisine", "text": "From Tajik plov to Indian curries and signature drinks." },
+      { "title": "Warm hospitality", "text": "A team that welcomes every guest with genuine care." }
+    ]
+  },
+  "signature": {
+    "label": "Signature dish",
+    "heading": "Plov worth coming back for",
+    "sub": "Plov and biryani are cooked daily and served straight from the line while they are truly fresh."
+  },
+  "menu": {
+    "label": "Menu",
+    "heading": "Choose your favourites",
+    "sub": "The full cafeteria menu — from breakfast to signature lemonades.",
+    "searchPlaceholder": "Search the menu…",
+    "searchLabel": "Search for a dish",
+    "searchEmpty": "Nothing found. Try a different search.",
+    "clearSearch": "Clear search",
+    "featuredBadge": "Popular",
+    "categoriesLabel": "Menu categories",
+    "itemsCount": "items",
+    "disclaimer": "Menu selection and availability may change throughout the day."
+  },
+  "delivery": {
+    "label": "Delivery",
+    "heading": "Your favourite Raydan dishes, delivered",
+    "text": "Order plov, hot dishes, salads, drinks and meals for a group. Call us to check availability and place your order.",
+    "steps": [
+      "Choose your dishes",
+      "Get in touch with us",
+      "Confirm the address and time",
+      "Receive your fresh order"
+    ],
+    "call": "Call us",
+    "openMenu": "Open the menu",
+    "phoneLabel": "Phone for orders"
+  },
+  "catering": {
+    "label": "Catering",
+    "heading": "Catering and made-to-order dishes",
+    "text": "We cater business meetings, family celebrations, openings and large gatherings. We will help you choose dishes from the Raydan menu and have the order ready right on time.",
+    "tags": [
+      "Corporate lunches",
+      "Family celebrations",
+      "Business events",
+      "Openings",
+      "Large group orders",
+      "Plov and biryani for events"
+    ],
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "How should we address you",
+      "phone": "Phone",
+      "phonePlaceholder": "+7 (___) ___-__-__",
+      "date": "Event date",
+      "guests": "Number of guests",
+      "guestsPlaceholder": "e.g. 25",
+      "eventType": "Event type",
+      "eventTypes": [
+        "Corporate lunch",
+        "Family celebration",
+        "Business event",
+        "Opening",
+        "Other"
+      ],
+      "eventTypePlaceholder": "Select a type",
+      "dishes": "Preferred dishes",
+      "dishesPlaceholder": "e.g. Tajik plov, salads, lemonades",
+      "comment": "Comment",
+      "commentPlaceholder": "Tell us about your event",
+      "consent": "I agree to the processing of my personal data",
+      "submit": "Send inquiry",
+      "errors": {
+        "nameRequired": "Please enter your name",
+        "phoneRequired": "Please enter your phone number",
+        "phoneInvalid": "This phone number looks incorrect",
+        "dateRequired": "Please choose a date",
+        "guestsRequired": "Please enter the number of guests",
+        "guestsInvalid": "Enter a number from 1 to 1000",
+        "eventTypeRequired": "Please select an event type",
+        "consentRequired": "Consent is required to send the inquiry"
+      }
+    },
+    "review": {
+      "heading": "Your inquiry is ready to send",
+      "text": "The form does not send data automatically yet. Copy the inquiry text and message us on Instagram — or simply call, and we will arrange everything by phone.",
+      "copy": "Copy inquiry",
+      "copied": "Copied",
+      "call": "Call us",
+      "instagram": "Message on Instagram",
+      "whatsapp": "Send via WhatsApp",
+      "back": "Edit inquiry",
+      "messageTitle": "Catering inquiry — Raydan",
+      "fieldName": "Name",
+      "fieldPhone": "Phone",
+      "fieldDate": "Date",
+      "fieldGuests": "Guests",
+      "fieldEventType": "Event type",
+      "fieldDishes": "Dishes",
+      "fieldComment": "Comment"
+    }
+  },
+  "locations": {
+    "label": "Locations",
+    "heading": "Three locations in Grozny",
+    "sub": "Visit your nearest Raydan — every location is open daily from early morning until midnight.",
+    "branch": "Raydan",
+    "hoursTitle": "Opening hours",
+    "daily": "Daily",
+    "openMap": "Open in maps",
+    "openMapIn2gis": "Open in 2GIS",
+    "call": "Call",
+    "mapAria": "Open the address in Yandex Maps"
+  },
+  "cta": {
+    "heading": "Choose what we should prepare for you today",
+    "viewMenu": "View menu",
+    "call": "Call us",
+    "findNearest": "Find the nearest Raydan"
+  },
+  "footer": {
+    "tagline": "A cafeteria of homemade and international cuisine",
+    "navTitle": "Sections",
+    "contactsTitle": "Contact",
+    "addressesTitle": "Locations",
+    "hoursTitle": "Opening hours",
+    "daily": "Daily",
+    "cateringLink": "Catering inquiry",
+    "privacy": "Privacy policy",
+    "copyright": "Raydan. All rights reserved.",
+    "langTitle": "Language",
+    "instagramAria": "Raydan on Instagram"
+  },
+  "common": {
+    "rub": "₽",
+    "phoneAria": "Call Raydan",
+    "stickyOrder": "Order by phone"
+  }
+}
