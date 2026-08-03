@@ -36,10 +36,22 @@
     "p1": "Raydan blends the ease of a modern cafeteria with the atmosphere of a good restaurant. Guests choose their dishes at the serving line, and our team plates them quickly, neatly and with genuine warmth.",
     "p2": "Tajik plov is the heart of the menu, joined by homemade dishes, soups, salads, Indian cuisine, desserts, coffee and signature drinks.",
     "values": [
-      { "title": "Homemade taste", "text": "Familiar comfort dishes, freshly cooked every single day." },
-      { "title": "Fast service", "text": "No waiting at the serving line — choose your dishes and take a seat." },
-      { "title": "International cuisine", "text": "From Tajik plov to Indian curries and signature drinks." },
-      { "title": "Warm hospitality", "text": "A team that welcomes every guest with genuine care." }
+      {
+        "title": "Homemade taste",
+        "text": "Familiar comfort dishes, freshly cooked every single day."
+      },
+      {
+        "title": "Fast service",
+        "text": "No waiting at the serving line — choose your dishes and take a seat."
+      },
+      {
+        "title": "International cuisine",
+        "text": "From Tajik plov to Indian curries and signature drinks."
+      },
+      {
+        "title": "Warm hospitality",
+        "text": "A team that welcomes every guest with genuine care."
+      }
     ]
   },
   "signature": {
@@ -72,7 +84,8 @@
     ],
     "call": "Call us",
     "openMenu": "Open the menu",
-    "phoneLabel": "Phone for orders"
+    "phoneLabel": "Phone for orders",
+    "whatsapp": "Message on WhatsApp"
   },
   "catering": {
     "label": "Catering",
@@ -136,7 +149,8 @@
       "fieldGuests": "Guests",
       "fieldEventType": "Event type",
       "fieldDishes": "Dishes",
-      "fieldComment": "Comment"
+      "fieldComment": "Comment",
+      "textWhatsapp": "Send the ready inquiry via WhatsApp in one tap — or copy the text, message us on Instagram, or simply call."
     }
   },
   "locations": {
@@ -173,6 +187,7 @@
   "common": {
     "rub": "₽",
     "phoneAria": "Call Raydan",
-    "stickyOrder": "Order by phone"
+    "stickyOrder": "Order by phone",
+    "whatsappAria": "Message Raydan on WhatsApp"
   }
 }

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import {
   Playfair_Display,
   Manrope,
+  Kaushan_Script,
   Noto_Naskh_Arabic,
   Noto_Sans_Arabic,
 } from "next/font/google";
@@ -27,6 +28,14 @@ const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
   variable: "--font-manrope",
   display: "swap",
+});
+
+const kaushan = Kaushan_Script({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-logo",
+  display: "swap",
+  preload: false,
 });
 
 const notoNaskh = Noto_Naskh_Arabic({
@@ -162,7 +171,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} dir={dir}>
       <body
-        className={`${playfair.variable} ${manrope.variable} ${notoNaskh.variable} ${notoSansArabic.variable} bg-raydan-paper text-raydan-text`}
+        className={`${playfair.variable} ${manrope.variable} ${kaushan.variable} ${notoNaskh.variable} ${notoSansArabic.variable} bg-raydan-paper text-raydan-text`}
       >
         {/* Keep reveal-animated content visible when JavaScript is off. */}
         <noscript>

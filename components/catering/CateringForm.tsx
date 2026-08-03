@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import type { Locale, Messages } from "@/lib/i18n";
-import { contact } from "@/data/contact";
+import { contact, whatsappLink } from "@/data/contact";
 
 /**
  * Catering inquiry form.
@@ -120,7 +120,7 @@ export default function CateringForm({
       <div className="rounded-3xl border border-raydan-gold/50 bg-raydan-paper p-7 sm:p-9">
         <h3 className="font-display text-2xl font-bold">{r.heading}</h3>
         <p className="mt-3 text-sm leading-relaxed text-raydan-muted">
-          {r.text}
+          {contact.whatsappEnabled ? r.textWhatsapp : r.text}
         </p>
         <pre
           dir="auto"
@@ -138,7 +138,7 @@ export default function CateringForm({
           </button>
           {contact.whatsappEnabled && (
             <a
-              href={`https://wa.me/${contact.whatsappNumber}?text=${encodeURIComponent(message)}`}
+              href={whatsappLink(message)}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex min-h-11 items-center rounded-full border border-raydan-gold px-5 text-sm font-semibold text-raydan-text transition-colors hover:bg-raydan-gold/10"

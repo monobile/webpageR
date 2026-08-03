@@ -16,14 +16,16 @@ export const contact = {
   instagramUrl: "https://www.instagram.com/raydan_cafeteria",
 
   /**
-   * WhatsApp integration is OFF by default because it has not been
-   * confirmed that the phone number above is registered with WhatsApp.
-   * Set to true (and verify the number) to let the catering form and
-   * delivery section open WhatsApp with a pre-filled message.
+   * Second phone number, confirmed to be registered with WhatsApp.
+   * Used for the WhatsApp buttons (delivery, catering form) and shown
+   * alongside the main number. Set `whatsappEnabled` to false to hide
+   * every WhatsApp entry point at once.
    */
-  whatsappEnabled: false,
-  /** Digits-only number used for wa.me links when whatsappEnabled is true. */
-  whatsappNumber: "79284706688",
+  whatsappEnabled: true,
+  whatsappDisplay: "+7 (928) 647-74-74",
+  whatsappHref: "tel:+79286477474",
+  /** Digits-only number used to build wa.me links. */
+  whatsappNumber: "79286477474",
 
   /** Opening hours shown across the site. Same for every location. */
   hours: {
@@ -32,10 +34,15 @@ export const contact = {
   },
 } as const;
 
+/** Builds a wa.me link, optionally with a pre-filled message. */
+export function whatsappLink(text?: string): string {
+  const base = `https://wa.me/${contact.whatsappNumber}`;
+  return text ? `${base}?text=${encodeURIComponent(text)}` : base;
+}
+
 /**
  * Public site URL used for canonical links, hreflang, Open Graph and
- * the sitemap. Replace with the real production domain before launch,
- * or set the NEXT_PUBLIC_SITE_URL environment variable.
+ * the sitemap. Overridable with the NEXT_PUBLIC_SITE_URL env variable.
  */
 export const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://raydan-cafeteria.ru";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://raydancafe.com";

@@ -68,17 +68,24 @@ public/
 | Menu items & prices | `data/menu.ts` — edit `price`, names per locale; add items by copying an entry (unique `id`, valid `categoryId`) |
 | Menu categories | `data/menu.ts` → `categories` |
 | UI copy / translations | `messages/ru.json`, `messages/en.json`, `messages/ar.json` |
-| Production domain | `data/contact.ts` → `siteUrl` or env `NEXT_PUBLIC_SITE_URL` |
+| WhatsApp number / toggle | `data/contact.ts` → `whatsappNumber`, `whatsappDisplay`, `whatsappEnabled` |
+| Production domain | `data/contact.ts` → `siteUrl` (default `https://raydancafe.com`) or env `NEXT_PUBLIC_SITE_URL` |
 
 Prices are plain numbers in rubles; two-size drinks use `price: [a, b]` plus a
 `size` label (e.g. `250/350 мл`).
 
 ## WhatsApp
 
-WhatsApp is **off by default** (`whatsappEnabled: false` in
-`data/contact.ts`) because it has not been confirmed that the listed phone
-number is registered with WhatsApp. Set it to `true` (and adjust
-`whatsappNumber`) to add one-tap WhatsApp hand-off to the catering form.
+WhatsApp is **enabled** and wired to the second phone number
+**+7 (928) 647-74-74** (confirmed WhatsApp-connected). It powers:
+
+- the WhatsApp button + number in the Delivery section,
+- one-tap hand-off of the catering inquiry (pre-filled wa.me message),
+- the WhatsApp number in the footer contacts.
+
+All of it is controlled from `data/contact.ts` (`whatsappEnabled`,
+`whatsappDisplay`, `whatsappNumber`). Set `whatsappEnabled: false` to hide
+every WhatsApp entry point at once.
 
 ## Catering form
 
@@ -94,22 +101,24 @@ states already exist in `messages/*.json` under `catering.review`).
 
 ## Assets — important
 
-Two original brand assets were **not present in the repository** when this
-site was built, so interim vector stand-ins are used:
+The original binary asset files (`plate_transp.png`, `raydan black
+logo(3).ai`) were not available in the repository, so both were **recreated
+as vector artwork from the reference photos supplied by the business**:
 
-1. **Plate** (`plate_transp.png`) — recreated as an original ornamental
-   vector drawing: `components/ui/Plate.tsx` (inline, used in the hero) and
-   `public/images/plate.svg` (standalone copy, used by the OG image).
-   To use the original photo: put `plate_transp.png` into `public/images/`
-   and swap `<Plate …>` in `components/hero/PlateVisual.tsx` for
-   `next/image` with `priority` and explicit width/height.
-2. **Logo** (`raydan black logo(3).ai`) — an interim lockup is rendered by
-   `components/ui/Logo.tsx`, with a standalone copy at
-   `public/brand/raydan-logo.svg`. To use the official logo, convert the .ai
-   file to SVG (e.g. Illustrator → *Export As SVG*, or Inkscape
-   `inkscape raydan.ai --export-filename=raydan-logo.svg`), overwrite
-   `public/brand/raydan-logo.svg`, and replace the inline SVG in
-   `Logo.tsx` with an `<Image src="/brand/raydan-logo.svg" …>`.
+1. **Plate** — `public/images/plate.svg` (rendered by
+   `components/ui/Plate.tsx`): scalloped gold-trimmed edge, white arabesque
+   band on black, glossy black well and the gold Raydan P mark, matching the
+   official plate photo. To use the original photo instead: put
+   `plate_transp.png` into `public/images/` and change the `src` in
+   `components/ui/Plate.tsx`.
+2. **Logo** — the P (hand-with-fork) mark is traced in
+   `components/ui/RaydanMark.tsx`; the full lockup (mark + brush-script
+   "Raydan" + CAFETERIA tagline) is `components/ui/Logo.tsx`, with a
+   standalone copy at `public/brand/raydan-logo.svg`. The brush lettering is
+   approximated with the Kaushan Script webfont. For pixel-perfect fidelity,
+   export `raydan black logo(3).ai` to SVG (Illustrator → *Export As SVG*,
+   or Inkscape) and overwrite `public/brand/raydan-logo.svg` /
+   the paths in `RaydanMark.tsx`.
 
 The menu/content screenshots from the brief are content references only —
 per the design requirements they are not embedded on the site.
@@ -133,18 +142,17 @@ Any Node-capable host works:
 npm run build && npm start
 ```
 
-On **Vercel**: import the repo, no extra configuration required. Set
-`NEXT_PUBLIC_SITE_URL=https://your-domain` for correct canonical/OG URLs.
-The `/` → `/ru` redirect is defined in `next.config.ts`; if you move to
-fully static hosting (`output: "export"`), replicate that redirect at the
-host level.
+The production domain is **raydancafe.com** (already the default
+`siteUrl` in `data/contact.ts`). On a Node host (e.g. Hostinger with a
+Node.js app, or Vercel) run the build and start commands above. The
+`/` → `/ru` redirect is defined in `next.config.ts`; if you move to fully
+static hosting (`output: "export"`), replicate that redirect at the host
+level.
 
 ## Values the owner should confirm
 
-- Production domain (`NEXT_PUBLIC_SITE_URL`)
-- Whether the phone number is WhatsApp-enabled (`whatsappEnabled`)
 - Privacy-policy URL (footer currently shows a non-linked placeholder —
   wire it up in `components/layout/Footer.tsx` when the document exists)
 - English/Arabic transliteration of street names and local dish names
   (Сискал → Siskal, Нохчи чорпа → Nokhchi chorpa)
-- Official logo + plate photo (see **Assets** above)
+- Exact-source logo export for pixel-perfect lettering (see **Assets** above)

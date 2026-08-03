@@ -1,5 +1,6 @@
 import type { Locale, Messages } from "@/lib/i18n";
-import { contact } from "@/data/contact";
+import { contact, whatsappLink } from "@/data/contact";
+import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
 import { city, locations } from "@/data/locations";
 import Logo from "@/components/ui/Logo";
 import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
@@ -89,6 +90,18 @@ export default function Footer({
             >
               {contact.phoneDisplay}
             </a>
+            {contact.whatsappEnabled && (
+              <a
+                href={whatsappLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t.common.whatsappAria}
+                className="mt-1.5 flex items-center gap-2 text-lg font-bold text-raydan-ivory transition-colors hover:text-raydan-light-gold"
+              >
+                <WhatsAppIcon className="h-4.5 w-4.5 shrink-0 text-raydan-light-gold" />
+                <span className="ltr-nums">{contact.whatsappDisplay}</span>
+              </a>
+            )}
             <h3 className="mt-6 text-sm font-bold tracking-wide text-raydan-ivory/50 uppercase">
               {t.footer.hoursTitle}
             </h3>

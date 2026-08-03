@@ -1,20 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 120" role="img" aria-label="Raydan">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 140" role="img" aria-label="Raydan Cafeteria">
   <!--
-    Interim vector wordmark.
-    The official brush-lettering logo ("raydan black logo(3).ai") was not
-    available in the repository at build time; replace this file with the
-    converted official SVG while keeping the same file name. See README.
+    Vector recreation of the official Raydan lockup (P hand-with-fork mark
+    + brush wordmark). Replace with the exact SVG export of
+    "raydan black logo(3).ai" when available, keeping this file name.
   -->
-  <g fill="none" stroke="#c99a3d" stroke-width="1.4">
-    <circle cx="60" cy="60" r="44"/>
-    <circle cx="60" cy="60" r="37" opacity="0.55"/>
+  <defs>
+    <mask id="tines">
+      <rect x="-50" y="-50" width="520" height="520" fill="white"/>
+      <line x1="185" y1="120" x2="416" y2="100" stroke="black" stroke-width="15" stroke-linecap="round"/>
+      <line x1="170" y1="170" x2="410" y2="162" stroke="black" stroke-width="15" stroke-linecap="round"/>
+    </mask>
+  </defs>
+  <g transform="translate(8 12) scale(0.28)" fill="#111008">
+    <path mask="url(#tines)" d="M96 40 C 190 18, 312 36, 396 78 C 393 122, 384 170, 372 212 C 292 176, 190 194, 110 240 L 70 240 L 88 56 C 90 46, 92 42, 96 40 Z"/>
+    <path d="M64 286 C 106 254, 148 244, 182 254 C 248 236, 326 224, 408 216 C 402 250, 372 292, 322 314 C 274 336, 214 342, 166 336 L 154 380 C 151 390, 143 396, 133 396 L 80 396 C 68 396, 60 388, 62 377 Z"/>
   </g>
-  <g fill="#c99a3d">
-    <path d="M60 26 C67 34 68 43 60 50 C52 43 53 34 60 26 Z" opacity="0.9"/>
-    <path d="M60 94 C67 86 68 77 60 70 C52 77 53 86 60 94 Z" opacity="0.9"/>
-    <path d="M26 60 C34 53 43 52 50 60 C43 68 34 67 26 60 Z" opacity="0.9"/>
-    <path d="M94 60 C86 53 77 52 70 60 C77 68 86 67 94 60 Z" opacity="0.9"/>
-    <circle cx="60" cy="60" r="6"/>
-  </g>
-  <text x="124" y="76" font-family="'Playfair Display', Georgia, 'Times New Roman', serif" font-style="italic" font-weight="700" font-size="58" letter-spacing="2" fill="#111008">Raydan</text>
+  <text x="146" y="82" font-family="'Kaushan Script', 'Brush Script MT', cursive" font-size="64" fill="#111008">Raydan</text>
+  <text x="152" y="116" font-family="Arial, sans-serif" font-size="17" letter-spacing="10" font-weight="700" fill="#c99a3d">CAFETERIA</text>
 </svg>

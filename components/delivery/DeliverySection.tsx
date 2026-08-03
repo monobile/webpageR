@@ -1,6 +1,7 @@
 import type { Messages } from "@/lib/i18n";
-import { contact } from "@/data/contact";
+import { contact, whatsappLink } from "@/data/contact";
 import SectionReveal from "@/components/ui/SectionReveal";
+import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
 
 export default function DeliverySection({ t }: { t: Messages }) {
   return (
@@ -48,6 +49,18 @@ export default function DeliverySection({ t }: { t: Messages }) {
             >
               {contact.phoneDisplay}
             </a>
+            {contact.whatsappEnabled && (
+              <a
+                href={whatsappLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t.common.whatsappAria}
+                className="mt-2 inline-flex items-center gap-2 text-lg font-semibold text-raydan-ivory/85 transition-colors hover:text-raydan-light-gold"
+              >
+                <WhatsAppIcon className="h-5 w-5 text-raydan-light-gold" />
+                <span className="ltr-nums">{contact.whatsappDisplay}</span>
+              </a>
+            )}
             <p className="ltr-nums mt-4 text-sm text-raydan-ivory/60">
               {t.hero.trustHours}
             </p>
@@ -58,9 +71,20 @@ export default function DeliverySection({ t }: { t: Messages }) {
               >
                 {t.delivery.call}
               </a>
+              {contact.whatsappEnabled && (
+                <a
+                  href={whatsappLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-12 items-center gap-2 rounded-full border border-raydan-gold/60 px-7 text-base font-semibold text-raydan-light-gold transition-colors hover:border-raydan-gold hover:bg-raydan-gold/10"
+                >
+                  <WhatsAppIcon className="h-5 w-5" />
+                  {t.delivery.whatsapp}
+                </a>
+              )}
               <a
                 href="#menu"
-                className="inline-flex min-h-12 items-center rounded-full border border-raydan-gold/60 px-7 text-base font-semibold text-raydan-light-gold transition-colors hover:border-raydan-gold hover:bg-raydan-gold/10"
+                className="inline-flex min-h-12 items-center rounded-full border border-raydan-ivory/30 px-7 text-base font-semibold text-raydan-ivory transition-colors hover:border-raydan-ivory/60"
               >
                 {t.delivery.openMenu}
               </a>
