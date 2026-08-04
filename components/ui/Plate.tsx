@@ -1,14 +1,10 @@
 import Image from "next/image";
 
 /**
- * Raydan ornamental plate — the site's hero object.
- *
- * The artwork (`/public/images/plate.svg`) is a vector recreation of the
- * official plate photo supplied by the business: scalloped gold-trimmed
- * edge, white arabesque band on black, glossy black well and the gold
- * Raydan P mark in the center. To use the original photo instead, drop
- * `plate_transp.png` into `public/images/` and change the `src` below
- * (see README → Assets).
+ * Raydan ornamental plate — the site's hero object (official photo,
+ * `public/images/plate_transp.png`). A vector recreation of the same
+ * plate lives at `public/images/plate.svg` (used by the OG image
+ * fallback and available as a lightweight alternative).
  */
 export default function Plate({
   className,
@@ -19,12 +15,12 @@ export default function Plate({
 }) {
   return (
     <Image
-      src="/images/plate.svg"
+      src="/images/plate_transp.png"
       alt={title ?? ""}
-      width={800}
-      height={800}
+      width={936}
+      height={843}
       priority
-      unoptimized
+      sizes="(min-width: 1024px) 34rem, 86vw"
       className={className}
     />
   );
