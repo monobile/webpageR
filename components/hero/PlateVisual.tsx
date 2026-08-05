@@ -53,11 +53,6 @@ export default function PlateVisual({ alt }: { alt: string }) {
             "radial-gradient(circle, rgba(201,154,61,0.28) 0%, rgba(201,154,61,0.08) 45%, transparent 70%)",
         }}
       />
-      {/* Thin gold ring echo */}
-      <div
-        aria-hidden="true"
-        className="absolute -inset-5 rounded-full border border-raydan-gold/25 md:-inset-8"
-      />
       <motion.div
         style={reduceMotion ? undefined : { x, y }}
         initial={reduceMotion ? false : { opacity: 0, scale: 0.94, rotate: -5 }}
