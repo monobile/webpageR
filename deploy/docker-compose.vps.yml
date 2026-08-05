@@ -28,17 +28,16 @@ services:
         set -e
         apk add --no-cache git
         if [ ! -d /app/.git ]; then
-          rm -rf /app/* /app/.[!.]* 2>/dev/null || true
           git clone https://github.com/monobile/webpageR.git /app
         fi
         cd /app
         git fetch origin || true
         git reset --hard origin/HEAD || true
-        HEAD_SHA=$(git rev-parse HEAD)
-        if [ ! -f .next/BUILD_ID ] || [ "$HEAD_SHA" != "$(cat .deployed_sha 2>/dev/null)" ]; then
+        git rev-parse HEAD > /tmp/head_sha
+        if [ ! -f .next/BUILD_ID ] || ! cmp -s /tmp/head_sha .deployed_sha; then
           npm ci
           npm run build
-          echo "$HEAD_SHA" > .deployed_sha
+          cp /tmp/head_sha .deployed_sha
         fi
         npm start
 
